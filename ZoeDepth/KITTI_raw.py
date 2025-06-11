@@ -41,7 +41,7 @@ class KittiDepthDataset(Dataset):
         if image is None:
             raise IOError(f"Nie można wczytać obrazu: {image_path}")
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        image = image.astype(np.float32) / 255.0
+        image = image.astype(np.float32) / 256.0
         image_tensor = torch.from_numpy(image.transpose(2, 0, 1))  # [3, H, W]
 
         # --- 2. Wczytaj rzadką mapę głębi (Velodyne) ---
